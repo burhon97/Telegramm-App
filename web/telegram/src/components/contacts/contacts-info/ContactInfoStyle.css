@@ -1,0 +1,77 @@
+.users {
+  width: 100%;
+}
+
+.user-info {
+  height: 8vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 15vh;
+  border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  margin: auto 15%  0 15%;
+  align-items: center;
+}
+
+.user-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  margin: 0 30% 0 0;
+}
+
+.content-user {
+  height: 77vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+
+
+.content-text {
+  display: flex;
+  align-items: center;
+  margin: 5% 15%;
+  text-align: left;
+  letter-spacing: 0.4px;
+}
+.content-text:hover {
+  color: rgb(0, 138, 223);
+}
+
+.content-icon {
+  font-size: 24px;
+  margin: 0 20% 0 0;
+}
+
+.content-icon-share {
+  font-size: 24px;
+  margin: 0 20% 0 0;
+}
+
+.content-icon-block {
+  font-size: 24px;
+  margin: 0 20% 0 0;
+  color: rgb(187, 0, 0);
+}
+
+.user-phone-number {
+  margin: 0 auto 20px auto;
+  padding: 0;
+  font-size: 14px;
+}

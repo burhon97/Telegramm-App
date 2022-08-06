@@ -1,0 +1,26 @@
+.right-side-bar {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.select-massage {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("background-massage.png");
+  height: 100vh;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.right-bar-field {
+  width: 70%;
+}
+
+.right-bar-contact {
+  width: 30%;
+}

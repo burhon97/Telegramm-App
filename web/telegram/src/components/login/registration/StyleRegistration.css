@@ -1,0 +1,52 @@
+.registration {
+    position: absolute;
+    top: 8%;
+    left: 0%;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    text-align: center;
+    /* margin: 80px auto; */
+}
+
+.regist-form {
+    width: 25%;
+    margin: auto;
+    background: #1f95cb;
+    padding: 50px 20px;
+    border-radius: 10px;
+}
+
+.regist-input {
+    width: 80%;
+    padding: 10px 15px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+}
+
+.regist-btn {
+    width: 60%;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    color: #fff;
+    background: none;
+}
+.regist-btn:hover {
+    transition: 400ms;
+    background: #fff;
+    color: #1f95cb;
+}
+
+.regist-header {
+    color: #1f95cb;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}

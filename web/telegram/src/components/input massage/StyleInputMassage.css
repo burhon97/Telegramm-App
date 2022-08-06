@@ -1,0 +1,54 @@
+.input-massage {
+  position: relative;
+  position: sticky;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 10px; */
+  border-left: 1px solid rgb(228, 228, 228);
+  border-right: 1px solid rgb(228, 228, 228);
+  background: #fff;
+}
+
+.input-file {
+  font-size: 30px;
+  color: grey;
+  transform: rotate(225deg);
+}
+
+.input-type-massage {
+  width: 75%;
+  /* max-height: 100%; */
+  padding: 10px 15px;
+  border: none;
+  margin: 0 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.input-type-massage:focus {
+  outline: none;
+  border: none;
+}
+
+.input-emoji {
+  font-size: 30px;
+  color: grey;
+  padding: 0 5px;
+}
+.input-emoji:hover {
+  color: orange;
+  transition: 400ms;
+}
+
+.input-btn {
+  font-size: 30px;
+  border: none;
+  background: none;
+  color: rgb(0, 138, 223);
+}

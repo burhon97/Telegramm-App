@@ -1,0 +1,100 @@
+.contacts {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contacts {
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+.seach-contacts-input {
+  width: 70%;
+  padding: 10px 15px;
+  font-size: 16px;
+  background: rgb(235, 234, 234);
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 0.4px;
+}
+.seach-contacts-input:focus {
+  outline: none;
+  border: 2px solid rgb(0, 138, 223);
+}
+
+.icon-menu {
+  font-size: 26px;
+  color: grey;
+  padding: 0 20px;
+}
+
+.contacts-fields {
+  width: 100%;
+  height: 90vh;
+  background: #fff;
+  overflow-y: scroll;
+  text-align: center;
+  margin: auto;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(215, 215, 215);
+  border-radius: 2px;
+}
+
+.contact {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid rgb(224, 224, 224) ;
+}
+.contact:hover {
+  background: #eee;
+}
+
+.contact-name {
+  margin-left: 20px;
+}
+
+.contact-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  margin-left: 20px;
+  
+}
+
+.add-contact-modal{
+  width: 90%;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  letter-spacing: 0.6px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid rgb(0, 138, 223);
+  border-radius: 3px;
+  background: #fff;
+}
+.add-contact-modal:hover {
+  background: rgb(0, 138, 223);
+  color: #fff;
+  transition: 300ms;
+}
