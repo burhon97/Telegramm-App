@@ -7,7 +7,7 @@ import { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
 import { IoHelpCircleOutline } from "react-icons/io5";
 
-const InputMassage = ({ contact, refreshMessages, inputRef,  }) => {
+const InputMassage = ({ contact, refreshMessages, inputRef }) => {
   const [inputMassage, setInputMassage] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
 
@@ -51,24 +51,44 @@ const InputMassage = ({ contact, refreshMessages, inputRef,  }) => {
   };
 
   const onSendMassage = () => {
-    fetch(
-      `http://localhost:3001/message-save`, {
-        method: "post",
-        body: JSON.stringify({
-          text: inputMassage,
-          sender: 1000,
-          receiver: contact.id
-        }),
-        headers: {
-          'Content-Type': "application/json"
-        }
-      }
-    );
-    
+    fetch(`http://localhost:3001/message-save`, {
+      method: "post",
+      body: JSON.stringify({
+        text: inputMassage,
+        sender: 1000,
+        receiver: contact.id,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
     fetch("http://localhost:3001/message-list")
       .then((response) => response.json())
       .then((loadMessage) => refreshMessages(loadMessage));
     setInputMassage("");
+
+    /////////graphql//////////////
+
+    const dice = 3;
+    const sides = 6;
+    const query = `query RollDice($dice: Int!, $sides: Int) {
+  rollDice(numDice: $dice, numSides: $sides)
+}`;
+
+    fetch("http://localhost:3001/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables: { dice, sides },
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("data returned: ", data));
   };
 
   const onClickEmoji = (event, emojiObj) => {

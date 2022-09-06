@@ -13,6 +13,7 @@ export const ModalContacts = ({ showModal, setShowModal, refreshContacts }) => {
   const onClickCancel = () => {
     setShowModal(!showModal);
   };
+  
 
   const onClickAddContact = () => {
     fetch(

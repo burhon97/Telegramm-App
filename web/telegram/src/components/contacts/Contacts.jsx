@@ -22,4 +22,5 @@ const Contacts = ({ onSelectContact, contact, inputRef }) => {
   );
 };
 
+
 export default Contacts;

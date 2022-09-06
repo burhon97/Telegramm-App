@@ -37,34 +37,4 @@ function App() {
 
 export default App;
 
-// const [status, setStatus] = useState(false);
 
-// const [name, setName] = useState("");
-// const [password, setPassword] = useState("");
-
-// const getUserData = JSON.parse(localStorage.getItem("user"));
-
-// const onClickLogin = () => {
-//   setStatus(true);
-// };
-
-// if (
-//   !getUserData &&
-//   status === true &&
-//   name === getUserData.name &&
-//   password === getUserData.password
-// )
-//   return (
-//     <div>
-//       <Login
-//         name={name}
-//         setName={setName}
-//         password={password}
-//         setPassword={setPassword}
-//         onClickLogin={onClickLogin}
-//       />
-//       <Routes>
-//         <Route path="/registration" element={<Registration />} />
-//       </Routes>
-//     </div>
-//   );

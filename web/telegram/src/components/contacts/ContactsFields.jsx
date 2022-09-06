@@ -22,6 +22,7 @@ export default function ContactsFields({ onSelectContact, inputRef }) {
     onSelectContact(contact);
     // inputRef.current.focus();
   };
+  
 
   const onClickModalContacts = () => {
     setShowModal(!showModal);

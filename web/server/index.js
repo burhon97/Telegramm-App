@@ -6,11 +6,40 @@ const { v4: uuidv4 } = require("uuid");
 const path = require("path");
 const postgres = require("pg");
 const { connect } = require("http2");
+const { graphqlHTTP } = require("express-graphql");
+const { buildSchema } = require("graphql");
+
+const schema = buildSchema(`
+type Query {
+  quoteOfTheDay: String
+  random: Float!
+  rollThreeDice: [Int]
+}
+`);
+const root = {
+  quoteOfTheDay: () => {
+    return Math.random() < 0.5 ? "Take it easy" : "Salvation lies within";
+  },
+  random: () => {
+    return Math.random();
+  },
+  rollThreeDice: () => {
+    return [1, 2, 3].map((_) => 1 + Math.floor(Math.random() * 6));
+  },
+};
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
 const port = 3001;
 const { Client } = postgres;
 
@@ -18,17 +47,8 @@ const messages = [];
 const contactsList = [];
 
 const filePath = path.resolve("file", "message.txt");
-console.log(filePath);
 
-// fs.readFile(filePath, "utf8", (err, data) => {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   }
 
-//   const oldData = data ? JSON.parse(data) : [];
-//   messages.push(...oldData);
-// });
 
 app.get("/message-list", async (req, res) => {
   const client = new Client({
@@ -37,12 +57,11 @@ app.get("/message-list", async (req, res) => {
     user: "postgres",
     password: "postgres1",
     database: "chatapp",
-  })
-  await client.connect()
-  const result = await client.query("SELECT * FROM message")
-  await client.end()
+  });
+  await client.connect();
+  const result = await client.query("SELECT * FROM message");
+  await client.end();
 
-  console.log(result.rows);
   res.send(result.rows);
 });
 
@@ -59,7 +78,7 @@ app.post("/message-save", async (req, res) => {
     "INSERT INTO message(text, sender, receiver) VALUES($1, $2, $3)",
     [req.body.text, req.body.sender, req.body.receiver]
   );
-  await client.end()
+  await client.end();
   // messages.push({
   //   id: uuidv4(),
   //   text: req.body.text,
@@ -91,7 +110,7 @@ app.get("/messages/:idReceiver", (req, res) => {
 //   }
 //   const oldContacts = data ? JSON.parse(data) : [];
 //   contactsList.push(...oldContacts);
-  
+
 // });
 
 app.get("/contacts-save", async (req, res) => {
@@ -113,13 +132,13 @@ app.get("/contacts-save", async (req, res) => {
     user: "postgres",
     password: "postgres1",
     database: "chatapp",
-  })
-  await client.connect()
+  });
+  await client.connect();
   await client.query(
-    'INSERT INTO contact(name, surname, phonenumber)VALUES($1, $2, $3)', 
+    "INSERT INTO contact(name, surname, phonenumber)VALUES($1, $2, $3)",
     [req.query.name, req.query.surname, req.query.phonenumber]
-  )
-  await client.end()
+  );
+  await client.end();
   res.send("contacts saved");
 });
 
@@ -130,14 +149,13 @@ app.get("/contacts-list", async (req, res) => {
     user: "postgres",
     password: "postgres1",
     database: "chatapp",
-  })
-  await client.connect()
-  const result = await client.query("SELECT * FROM contact")
-  await client.end()
+  });
+  await client.connect();
+  const result = await client.query("SELECT * FROM contact");
+  await client.end();
 
   res.send(result.rows);
 });
-
 
 ///////////////REGISTRATION///////////////////////////////////////////////
 
@@ -154,12 +172,12 @@ app.post("/regist-save", async (req, res) => {
     "INSERT INTO registration(name, password) VALUES($1, $2)",
     [req.body.name, req.body.password]
   );
-  await client.end()
+  await client.end();
 
-  res.send('regist saved')
-})
+  res.send("regist saved");
+});
 
-app.get('/regist-list', async(req, res)=> {
+app.get("/regist-list", async (req, res) => {
   const client = new Client({
     host: "localhost",
     port: 5432,
@@ -167,12 +185,12 @@ app.get('/regist-list', async(req, res)=> {
     password: "postgres1",
     database: "chatapp",
   });
-  await client.connect()
-  const result = await client.query("SELECT * FROM registration")
-  await client.end()
+  await client.connect();
+  const result = await client.query("SELECT * FROM registration");
+  await client.end();
 
-  res.send(result.rows)
-})
+  res.send(result.rows);
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
