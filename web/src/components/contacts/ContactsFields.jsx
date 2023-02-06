@@ -10,7 +10,7 @@ export default function ContactsFields({ onSelectContact, inputRef }) {
   
 
   useEffect(() => {  
-    fetch("http://localhost:3001/contacts-list")
+    fetch("http://localhost:4001/contacts-list")
       .then((res) => res.json()) 
       .then((loadContacts) => setContacts(loadContacts));
   }, [refreshContact]);
@@ -25,7 +25,7 @@ export default function ContactsFields({ onSelectContact, inputRef }) {
   
 
   const onClickModalContacts = () => {
-    setShowModal(!showModal);
+    setShowModal(true);
   };
 
   const onLogout = () => {

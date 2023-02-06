@@ -51,7 +51,7 @@ const InputMassage = ({ contact, refreshMessages, inputRef }) => {
   };
 
   const onSendMassage = () => {
-    fetch(`http://localhost:3001/message-save`, {
+    fetch(`http://localhost:4001/message-save`, {
       method: "post",
       body: JSON.stringify({
         text: inputMassage,
@@ -63,33 +63,11 @@ const InputMassage = ({ contact, refreshMessages, inputRef }) => {
       },
     });
 
-    fetch("http://localhost:3001/message-list")
+    fetch("http://localhost:4001/message-list")
       .then((response) => response.json())
       .then((loadMessage) => refreshMessages(loadMessage));
     setInputMassage("");
-
-    /////////graphql//////////////
-
-    const dice = 3;
-    const sides = 6;
-    const query = `query RollDice($dice: Int!, $sides: Int) {
-  rollDice(numDice: $dice, numSides: $sides)
-}`;
-
-    fetch("http://localhost:3001/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        query,
-        variables: { dice, sides },
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("data returned: ", data));
-  };
+  }
 
   const onClickEmoji = (event, emojiObj) => {
     setInputMassage((prevInput) => prevInput + emojiObj.emoji);

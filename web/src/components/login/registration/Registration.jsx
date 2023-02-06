@@ -21,7 +21,7 @@ export const Registration = () => {
  
 
   const onClickLogin = () => {
-    fetch("http://localhost:3001/regist-save", {
+    fetch("http://localhost:4001/regist-save", {
       method: "post", 
       body: JSON.stringify(user),
       headers: {

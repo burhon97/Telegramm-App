@@ -14,7 +14,7 @@ export function RightSideBar({ contact, inputRef }) {
   const [refreshMessages, setRefreshMessages] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:3001/message-list")
+    fetch("http://localhost:4001/message-list")
       .then((response) => response.json())
       .then((loadMessage) => setNewMassages(loadMessage));
   }, [refreshMessages]);

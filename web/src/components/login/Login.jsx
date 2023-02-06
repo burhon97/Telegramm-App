@@ -11,7 +11,7 @@ export const Login = () => {
   const [password, setPassword] = useState('')
 
   useEffect(()=>{
-    fetch('http://localhost:3001/regist-list')
+    fetch('http://localhost:4001/regist-list')
     .then((res)=> res.json())
     .then((loadData )=> setRegistData(loadData) )
   },[])

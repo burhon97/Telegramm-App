@@ -3,7 +3,7 @@ import "./ModalContacts.css";
 import { useState } from "react";
 
 
-export const ModalContacts = ({ showModal, setShowModal, refreshContacts }) => {
+export const ModalContacts = ({ setShowModal, refreshContacts }) => {
   // const [addContactStatus, setAddContactStatus] = useState(false);
   // const [oldContacts, setOldContacts] = useState([]);
   const [name, setName] = useState("");
@@ -11,16 +11,16 @@ export const ModalContacts = ({ showModal, setShowModal, refreshContacts }) => {
   const [phonenumber, setPhoneNumber] = useState("");
 
   const onClickCancel = () => {
-    setShowModal(!showModal);
+    setShowModal(false);
   };
   
 
   const onClickAddContact = () => {
     fetch(
-      `http://localhost:3001/contacts-save?name=${name}&&surname=${surname}&&phoneNumber=${phonenumber}`
+      `http://localhost:4001/contacts-save?name=${name}&&surname=${surname}&&phoneNumber=${phonenumber}`
     );
     // setAddContactStatus(true);
-    fetch("http://localhost:3001/contacts-list")
+    fetch("http://localhost:4001/contacts-list")
       .then((res) => res.json()) 
       .then((loadContacts) => refreshContacts(loadContacts));
     setShowModal(false);
