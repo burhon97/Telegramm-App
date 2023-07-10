@@ -4,7 +4,7 @@
     "description": "MERN stack (ExpressJS, React and Node.JS)",
     "main": "index.js",
     "scripts": {
-      "build": "cd server && npm install && npm run server && cd ../web && npm install && npm run build",
+      "build": "cd server && npm install && npm run server && cd ../web && npm install && npm start",
       "start": "TG_ALLOW_MIXED=ALLOW  node server/build/src/index.js"
     },
     "repository": {
