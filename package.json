@@ -1,0 +1,20 @@
+{
+    "name": "clone-telegram",
+    "version": "1.0.0",
+    "description": "MERN stack (ExpressJS, React and Node.JS)",
+    "main": "index.js",
+    "scripts": {
+      "build": "cd server && npm install && npm run build && cd ../web && npm install && npm run build",
+      "start": "TG_ALLOW_MIXED=ALLOW  node server/build/src/index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/burhon97/Telegramm-App.git"
+    },
+    "author": "Akbar Khushnazarov",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/burhon97/Telegramm-App/issues"
+    },
+    "homepage": "https://github.com/burhon97/Telegramm-App#readme"
+  }
