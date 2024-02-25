@@ -6,12 +6,11 @@ import { ModalContacts } from "./modal contacts/Modal-contacts";
 export default function ContactsFields({ onSelectContact, inputRef }) {
   const [showModal, setShowModal] = useState(false);
   const [contacts, setContacts] = useState([]);
-  const [refreshContact, setRefreshContact] = useState([])
-  
+  const [refreshContact, setRefreshContact] = useState([]);
 
-  useEffect(() => {  
+  useEffect(() => {
     fetch("http://localhost:4001/contacts-list")
-      .then((res) => res.json()) 
+      .then((res) => res.json())
       .then((loadContacts) => setContacts(loadContacts));
   }, [refreshContact]);
 
@@ -22,18 +21,17 @@ export default function ContactsFields({ onSelectContact, inputRef }) {
     onSelectContact(contact);
     // inputRef.current.focus();
   };
-  
 
   const onClickModalContacts = () => {
-    setShowModal(true);
+      setShowModal(true);
   };
 
   const onLogout = () => {
-    localStorage.removeItem('user')
-  }
+    localStorage.removeItem("user");
+  };
 
   return (
-    <form className="contacts-fields">
+    <form className="contacts-fields" onSubmit={(e)=> e.preventDefault()}>
       <button className="add-contact-modal" onClick={onClickModalContacts}>
         Add contact
       </button>
@@ -53,14 +51,18 @@ export default function ContactsFields({ onSelectContact, inputRef }) {
 
       {showModal && (
         <ModalContacts
-          showModal={showModal}
           setShowModal={setShowModal}
           contacts={contacts}
           setContacts={setContacts}
-          refreshContacts = {(refresh)=> setRefreshContact(refresh)}
+          refreshContacts={(refresh) => setRefreshContact(refresh)}
         />
       )}
-      <button onClick={onLogout} style={{position: 'absolute', bottom: '0', left: '40%'}}>Logout</button>
+      <button
+        onClick={onLogout}
+        style={{ position: "absolute", bottom: "0", left: "40%" }}
+      >
+        Logout
+      </button>
     </form>
   );
 }
